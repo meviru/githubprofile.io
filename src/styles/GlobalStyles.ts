@@ -24,10 +24,28 @@ input,
 textarea,
 button,
 select {
+    border: none;
     outline: none;
     font-family: inherit;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
+}
+
+
+::placeholder {
+    color: #4A5567;
+}
+
+::-webkit-input-placeholder {
+    color: #4A5567;
+}
+
+::-moz-placeholder {
+    color: #4A5567;
+}
+
+:-ms-input-placeholder {
+    color: #4A5567;
 }
 
 ::-webkit-scrollbar {
