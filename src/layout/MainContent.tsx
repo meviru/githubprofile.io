@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ProfileInfo from "../core/components/ProfileInfo";
+import CardView from "../core/components/CardView";
 
 const MainContentWrapper = styled.main`
     flex-grow: 1;
@@ -16,7 +17,8 @@ const Container = styled.div`
 const MainContent = () => {
     return <MainContentWrapper>
         <Container>
-            <ProfileInfo></ProfileInfo>
+            <ProfileInfo />
+            <CardView />
         </Container>
     </MainContentWrapper>
 }

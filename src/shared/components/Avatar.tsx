@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 const AvatarWrapper = styled.div`
-    position: relative;
-    top: -42px;
     width: 120px;
     height: 120px;
     padding: 8px;
+    margin-top: -42px;
     border-radius: 20px;
     background-color: #20293A;
 `

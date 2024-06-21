@@ -14,7 +14,7 @@ const InfoCardValue = styled.span`
     font-weight: 500;
     letter-spacing: -0.25px;
     &.text-white {
-        color: #fff;
+        color: #CDD5E0;
     }
 `
 
