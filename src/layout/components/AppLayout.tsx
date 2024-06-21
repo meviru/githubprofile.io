@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Hero from "../core/components/Hero";
+import Hero from "../../core/components/Hero";
 import MainContent from "./MainContent";
 
 const PageWrapper = styled.div`

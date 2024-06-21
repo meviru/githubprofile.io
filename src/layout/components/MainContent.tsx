@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import ProfileInfo from "../core/components/ProfileInfo";
-import CardView from "../core/components/CardView";
+import ProfileInfo from "../../core/components/ProfileInfo";
+import CardView from "../../core/components/CardView";
 
 const MainContentWrapper = styled.main`
     flex-grow: 1;
