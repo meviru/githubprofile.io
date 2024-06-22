@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { Children, GithubContextType } from "../models";
 import getProfileInfo from "../services/GitHubService";
+import { ToastContainer, toast } from "react-toastify";
 
 export const GithubContext = createContext<GithubContextType>({
   profile: {},
@@ -14,14 +15,17 @@ const GithubProvider = ({ children }: Children) => {
     try {
       const response: any = await getProfileInfo(username);
       setProfile(response);
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error("Error fetching user information.", {
+        theme: "colored",
+      });
     }
   };
 
   return (
     <GithubContext.Provider value={{ profile, fetchProfileInfo }}>
       {children}
+      <ToastContainer />
     </GithubContext.Provider>
   );
 };

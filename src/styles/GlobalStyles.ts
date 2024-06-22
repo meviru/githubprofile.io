@@ -60,4 +60,15 @@ select {
 ::-webkit-scrollbar-thumb {
   background: #6C727F; 
   border-radius: 5px;
+}
+
+.Toastify__toast-container {
+    width: 375px;
+    max-width: 100%;
+}
+
+.Toastify__toast {
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
 }`
