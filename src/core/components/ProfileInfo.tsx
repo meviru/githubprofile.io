@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Avatar from "../../shared/components/Avatar";
-import avatar from "/hero-image-github-profile.png";
 import InfoCard from "../../shared/components/InfoCard";
 import { useContext } from "react";
 import { GithubContext } from "../../context";
