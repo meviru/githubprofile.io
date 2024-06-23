@@ -3,6 +3,7 @@ import iconSearch from "/Search.svg";
 import { useContext, useEffect, useState } from "react";
 import { GithubContext } from "../../context";
 import { useDebounce } from "use-debounce";
+import SearchResult from "./SearchResult";
 
 const SearchWrapper = styled.div`
   position: relative;
@@ -26,17 +27,23 @@ const SearchIcon = styled.div`
 const SearchInput = styled.input`
   width: 100%;
   height: 56px;
-  color: #4a5567;
+  color: #ccd4df;
   border-radius: 12px;
   background-color: #20293a;
   padding: 16px 16px 16px 56px;
+  border: 2px solid transparent;
+  transition: 0.25s ease;
+  &:focus {
+    border-color: #3762e4;
+  }
 `;
 
 const SearchBox = () => {
   const defaultSearchText = "github";
   const [searchValue, setSearchValue] = useState<string>(defaultSearchText);
   const [updatedSearchValue] = useDebounce(searchValue, 500);
-  const { fetchProfileInfo } = useContext(GithubContext);
+  const { profile, fetchProfileInfo } = useContext(GithubContext);
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     updatedSearchValue.length > 0
@@ -44,15 +51,33 @@ const SearchBox = () => {
       : fetchProfileInfo(defaultSearchText);
   }, [updatedSearchValue]);
 
+  const updateFocus = (isFocus: boolean) => {
+    isFocus ? setIsFocused(true) : setIsFocused(false);
+  };
+
   return (
     <>
       <SearchWrapper>
         <SearchIcon />
         <SearchInput
+          value={searchValue}
           placeholder="username"
           onChange={(e) => {
             setSearchValue(e.target.value);
           }}
+          onFocus={() => updateFocus(true)}
+          onBlur={() => updateFocus(false)}
+        />
+        <SearchResult
+          profile={profile}
+          isProfileSelected={
+            profile &&
+            Object.keys(profile).length > 0 &&
+            isFocused &&
+            searchValue.length > 0
+              ? true
+              : false
+          }
         />
       </SearchWrapper>
     </>
