@@ -20,16 +20,24 @@ const ViewAllButton = styled.a`
 `;
 
 const CardView = () => {
-  const { repositoryList } = useContext(GithubContext);
+  const { profile, repositoryList } = useContext(GithubContext);
+
+  const getOrgUrl = (url: string | undefined) => {
+    const username = url?.split("/").pop();
+    return `https://github.com/orgs/${username}/repositories`;
+  }
   return (
     <>
       <CardWrapper>
         {repositoryList &&
           repositoryList.length > 0 &&
-          repositoryList.map((repo) => <Card key={repo.id} repo={repo} />)}
+          repositoryList.map((repo) =>
+            <a key={repo.id} href={repo.html_url} target="_blank" rel="noreferrer">
+              <Card repo={repo} />
+            </a>)}
       </CardWrapper>
       <ViewAllWrapper>
-        <ViewAllButton href="#">View all repositories</ViewAllButton>
+        <ViewAllButton href={profile.type === 'User' ? `${profile.html_url}?tab=repositories` : getOrgUrl(profile.html_url)} target="_blank" rel="noreferrer">View all repositories</ViewAllButton>
       </ViewAllWrapper>
     </>
   );

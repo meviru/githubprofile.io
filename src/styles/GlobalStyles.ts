@@ -20,6 +20,10 @@ body {
     background-color: #20293A;
 }
 
+a {
+    text-decoration: none;
+}
+
 input,
 textarea,
 button,
