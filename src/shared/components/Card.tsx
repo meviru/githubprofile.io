@@ -39,6 +39,13 @@ const CardDescription = styled.p`
   color: #98a3b7;
   font-size: 14px;
   margin-top: 12px;
+  height: 36px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
 `;
 
 const CardBody = styled.div`

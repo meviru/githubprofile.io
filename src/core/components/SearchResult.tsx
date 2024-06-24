@@ -34,8 +34,8 @@ const AvatarImage = styled.img`
 `;
 
 const SearchResultDescription = styled.div`
-  padding-left: 12px;
   flex-grow: 1;
+  padding: 0 12px;
   overflow: hidden;
 `;
 
