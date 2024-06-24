@@ -16,7 +16,7 @@ export const getProfileInfo = async (username: string) => {
 
 export const getRepoList = async (url: string) => {
     try {
-        const response = await fetch(url);
+        const response = await fetch(`${url}?per_page=4`);
         if (!response.ok) {
             throw new Error('Network response was not ok' + response.statusText);
         }

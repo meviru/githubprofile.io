@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, keyframes } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 *, *:before, *:after {
@@ -76,3 +76,12 @@ select {
     font-size: 14px;
     font-weight: 500;
 }`
+
+export const SkeletonAnimation = keyframes`
+    0% {
+        background-position: -450px 0;
+    }
+    100% {
+        background-position: 450px 0;
+    }
+`

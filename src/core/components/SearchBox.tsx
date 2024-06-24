@@ -72,9 +72,9 @@ const SearchBox = () => {
           profile={profile}
           isProfileSelected={
             profile &&
-            Object.keys(profile).length > 0 &&
-            isFocused &&
-            searchValue.length > 0
+              Object.keys(profile).length > 0 &&
+              isFocused &&
+              searchValue.length > 0
               ? true
               : false
           }

@@ -36,9 +36,13 @@ const CardView = () => {
               <Card repo={repo} />
             </a>)}
       </CardWrapper>
-      <ViewAllWrapper>
-        <ViewAllButton href={profile.type === 'User' ? `${profile.html_url}?tab=repositories` : getOrgUrl(profile.html_url)} target="_blank" rel="noreferrer">View all repositories</ViewAllButton>
-      </ViewAllWrapper>
+      {(repositoryList &&
+        repositoryList.length > 0) &&
+        <ViewAllWrapper>
+          <ViewAllButton href={profile.type === 'User' ? `${profile.html_url}?tab=repositories` : getOrgUrl(profile.html_url)} target="_blank" rel="noreferrer">View all repositories</ViewAllButton>
+        </ViewAllWrapper>
+      }
+
     </>
   );
 };

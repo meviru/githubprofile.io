@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { SkeletonAnimation } from "../../styles/GlobalStyles";
 
 const AvatarWrapper = styled.div`
   width: 120px;
@@ -17,10 +18,29 @@ const AvatarImg = styled.img`
   border-radius: 12px;
 `;
 
+const AvatarSkeleton = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #20293a;
+  &:before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 100%;
+        background-image: linear-gradient(to right, #20293a 0%, rgba(255,255,255,0.15) 20%, #20293a 40%, #20293a 100%);
+        background-repeat: no-repeat;
+        background-size: 450px 400px;
+        animation: ${SkeletonAnimation} 1s linear infinite;
+    }
+`
+
 const Avatar = ({ src }: { src: string | undefined }) => {
   return (
     <AvatarWrapper>
-      <AvatarImg src={src} alt="Avatar" />
+      {src && src.length > 0 ? <AvatarImg src={src} alt="Avatar" /> : <AvatarSkeleton />}
     </AvatarWrapper>
   );
 };
