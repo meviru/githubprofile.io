@@ -10,6 +10,7 @@ export const GithubContext = createContext<GithubContextType>({
   repositoryList: [],
   fetchProfileInfo: () => { },
   setProfileInfo: () => { },
+  resetSearchResult: () => { },
 });
 
 const GithubProvider = ({ children }: Children) => {
@@ -48,7 +49,13 @@ const GithubProvider = ({ children }: Children) => {
   }
 
   const setProfileInfo = (profile: Profile) => {
-    setProfile(profile);
+    setResponse(profile);
+  }
+
+  const resetSearchResult = (resetValue: boolean) => {
+    if (resetValue) {
+      setSelectedProfile({});
+    }
   }
 
   useEffect(() => {
@@ -57,7 +64,7 @@ const GithubProvider = ({ children }: Children) => {
 
   return (
     <GithubContext.Provider
-      value={{ profile, selectedProfile, isLoading, repositoryList, fetchProfileInfo, setProfileInfo }}
+      value={{ profile, selectedProfile, isLoading, repositoryList, fetchProfileInfo, setProfileInfo, resetSearchResult }}
     >
       {children}
       <ToastContainer />

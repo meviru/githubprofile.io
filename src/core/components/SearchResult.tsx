@@ -59,14 +59,20 @@ const RepoDescription = styled.p`
 const SearchResult = ({
   profile,
   isProfileSelected,
+  setIsProfileSelected,
+  resetSearchValue
 }: {
   profile: Profile;
   isProfileSelected: boolean;
+  setIsProfileSelected: any;
+  resetSearchValue: any;
 }) => {
   const { setProfileInfo } = useContext(GithubContext);
 
   const updateProfile = () => {
     setProfileInfo(profile);
+    setIsProfileSelected(false);
+    resetSearchValue(true);
   }
 
   return (

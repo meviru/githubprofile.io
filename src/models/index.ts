@@ -150,4 +150,5 @@ export interface GithubContextType {
     repositoryList: Repository[],
     fetchProfileInfo: (value: string, isSearch?: boolean) => void
     setProfileInfo: (value: Profile) => void
+    resetSearchResult: (value: boolean) => void
 }

@@ -41,8 +41,9 @@ const SearchInput = styled.input`
 const SearchBox = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [updatedSearchValue] = useDebounce(searchValue, 500);
-  const { selectedProfile, fetchProfileInfo } = useContext(GithubContext);
+  const { selectedProfile, resetSearchResult, fetchProfileInfo } = useContext(GithubContext);
   const [isFocused, setIsFocused] = useState(false);
+  const [isProfileSelected, setIsProfileSelected] = useState<boolean>(false);
 
   useEffect(() => {
     updatedSearchValue.length > 0 && fetchProfileInfo(updatedSearchValue, true)
@@ -51,6 +52,22 @@ const SearchBox = () => {
   const updateFocus = (isFocus: boolean) => {
     isFocus ? setIsFocused(true) : setIsFocused(false);
   };
+
+  useEffect(() => {
+    selectedProfile &&
+      Object.keys(selectedProfile).length > 0 &&
+      isFocused &&
+      searchValue.length > 0
+      ? setIsProfileSelected(true)
+      : setIsProfileSelected(false)
+  }, [selectedProfile, isFocused, updatedSearchValue]);
+
+  const resetSearch = (resetValue: boolean) => {
+    if (resetValue) {
+      setSearchValue("");
+      resetSearchResult(true);
+    }
+  }
 
   return (
     <>
@@ -66,14 +83,9 @@ const SearchBox = () => {
         />
         <SearchResult
           profile={selectedProfile}
-          isProfileSelected={
-            selectedProfile &&
-              Object.keys(selectedProfile).length > 0 &&
-              isFocused &&
-              searchValue.length > 0
-              ? true
-              : false
-          }
+          isProfileSelected={isProfileSelected}
+          setIsProfileSelected={setIsProfileSelected}
+          resetSearchValue={resetSearch}
         />
       </SearchWrapper>
     </>
