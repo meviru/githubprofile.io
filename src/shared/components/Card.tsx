@@ -79,6 +79,17 @@ const CardUpdates = styled.div`
 `;
 
 const Card = ({ repo }: { repo: Repository }) => {
+  const getUpdatedTime = (date: any) => {
+    const givenDate: any = new Date(date);
+    const currentDate: any = new Date();
+
+    const diffInMs = currentDate - givenDate;
+
+    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+    const days = diffInDays % 30;
+
+    return `updated ${days} days ago`;
+  }
   return (
     <>
       <CardContent>
@@ -103,7 +114,7 @@ const Card = ({ repo }: { repo: Repository }) => {
               <CardStatName>{repo.stargazers_count}</CardStatName>
             </CardStat>
           </CardStatWrapper>
-          <CardUpdates>updated 4 days ago</CardUpdates>
+          <CardUpdates>{getUpdatedTime(repo.updated_at)}</CardUpdates>
         </CardBody>
       </CardContent>
     </>

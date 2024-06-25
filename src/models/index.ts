@@ -145,7 +145,9 @@ export interface Repository {
 
 export interface GithubContextType {
     profile: Profile,
+    selectedProfile: Profile,
     isLoading: boolean,
     repositoryList: Repository[],
-    fetchProfileInfo: (value: string) => void
+    fetchProfileInfo: (value: string, isSearch?: boolean) => void
+    setProfileInfo: (value: Profile) => void
 }

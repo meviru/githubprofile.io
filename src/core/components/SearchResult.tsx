@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Profile } from "../../models";
+import { useContext } from "react";
+import { GithubContext } from "../../context";
 
 const SearchResultWrapper = styled.div`
   position: absolute;
@@ -61,13 +63,22 @@ const SearchResult = ({
   profile: Profile;
   isProfileSelected: boolean;
 }) => {
+  const { setProfileInfo } = useContext(GithubContext);
+
+  const updateProfile = () => {
+    setProfileInfo(profile);
+  }
+
   return (
-    <SearchResultWrapper className={isProfileSelected ? "show" : ""}>
+    <SearchResultWrapper onClick={updateProfile} className={isProfileSelected ? "show" : ""}>
       <SearchResultAvatar>
         <AvatarImage src={profile.avatar_url} alt={profile.name} />
       </SearchResultAvatar>
       <SearchResultDescription>
-        <RepoName title={profile.name}>{profile.name}</RepoName>
+        {profile.name?.length ?
+          <RepoName title={profile.name}>{profile.name}</RepoName> :
+          <RepoName title={profile.login}>{profile.login}</RepoName>
+        }
         {profile.bio && (
           <RepoDescription title={profile.bio}>{profile.bio}</RepoDescription>
         )}

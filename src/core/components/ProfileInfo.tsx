@@ -45,7 +45,7 @@ const ProfileInfo = () => {
         </Flex>
       </ProfileWrapper>
       <TitleWrapper>
-        <Title>{profile.name}</Title>
+        {profile.name?.length ? <Title>{profile.name}</Title> : <Title>{profile.login}</Title>}
         <SubTitle>{profile.bio}</SubTitle>
       </TitleWrapper>
     </>

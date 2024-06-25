@@ -39,16 +39,13 @@ const SearchInput = styled.input`
 `;
 
 const SearchBox = () => {
-  const defaultSearchText = "github";
-  const [searchValue, setSearchValue] = useState<string>(defaultSearchText);
+  const [searchValue, setSearchValue] = useState<string>("");
   const [updatedSearchValue] = useDebounce(searchValue, 500);
-  const { profile, fetchProfileInfo } = useContext(GithubContext);
+  const { selectedProfile, fetchProfileInfo } = useContext(GithubContext);
   const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
-    updatedSearchValue.length > 0
-      ? fetchProfileInfo(updatedSearchValue)
-      : fetchProfileInfo(defaultSearchText);
+    updatedSearchValue.length > 0 && fetchProfileInfo(updatedSearchValue, true)
   }, [updatedSearchValue]);
 
   const updateFocus = (isFocus: boolean) => {
@@ -66,13 +63,12 @@ const SearchBox = () => {
             setSearchValue(e.target.value);
           }}
           onFocus={() => updateFocus(true)}
-          onBlur={() => updateFocus(false)}
         />
         <SearchResult
-          profile={profile}
+          profile={selectedProfile}
           isProfileSelected={
-            profile &&
-              Object.keys(profile).length > 0 &&
+            selectedProfile &&
+              Object.keys(selectedProfile).length > 0 &&
               isFocused &&
               searchValue.length > 0
               ? true
