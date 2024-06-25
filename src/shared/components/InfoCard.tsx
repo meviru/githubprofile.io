@@ -9,6 +9,9 @@ const InfoCardWrapper = styled.div`
   align-items: center;
   border-radius: 12px;
   background-color: #111629;
+  @media (max-width: 767px) {
+    padding: 8px 15px;
+  }
 `;
 
 const InfoCardValue = styled.span`
@@ -26,6 +29,9 @@ const Separator = styled.span`
   height: 36px;
   margin: 0 20px;
   background-color: #364153;
+  @media (max-width: 767px) {
+    margin: 0 15px;
+  }
 `;
 
 const CountSkeleton = styled.div`

@@ -12,6 +12,12 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 0 20px;
   max-width: 1018px;
+  @media (max-width: 1279px) {
+    max-width: 875px;
+  }
+  @media (max-width: 767px) {
+    max-width: 640px;
+  }
 `;
 
 const MainContent = () => {

@@ -7,6 +7,9 @@ const CardWrapper = styled.div`
   display: grid;
   gap: 34px 32px;
   grid-template-columns: 1fr 1fr;
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const ViewAllWrapper = styled.div`

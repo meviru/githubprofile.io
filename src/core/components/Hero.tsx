@@ -4,7 +4,7 @@ import SearchBox from "./SearchBox";
 
 const HeroWrapper = styled.header`
     height: 240px;
-    padding: 32px 0;
+    padding: 32px 20px;
     background: url(${heroBg}) no-repeat center center/cover;
 `
 

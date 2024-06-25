@@ -6,7 +6,6 @@ import { GithubContext } from "../../context";
 
 const ProfileWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
 `;
 
 const Flex = styled.div`
@@ -15,6 +14,9 @@ const Flex = styled.div`
   flex-wrap: wrap;
   margin-left: 38px;
   align-items: flex-start;
+  @media (max-width: 767px) {
+    margin-left: 18px;
+  }
 `;
 
 const TitleWrapper = styled.div`

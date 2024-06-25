@@ -5,9 +5,15 @@ const AvatarWrapper = styled.div`
   width: 120px;
   height: 120px;
   padding: 8px;
+  flex: 0 0 120px;
   margin-top: -42px;
   border-radius: 20px;
   background-color: #20293a;
+  @media (max-width: 767px) {
+    width: 100px;
+    height: 100px;
+    flex: 0 0 100px;
+  }
 `;
 
 const AvatarImg = styled.img`
